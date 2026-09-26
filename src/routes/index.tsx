@@ -101,7 +101,7 @@ function Index() {
       const ctx = canvasRef.current!.getContext("2d")!;
       drawFrame(ctx, s, codeLinesRef.current, timeline.current, 0.01);
       setPhase("ready");
-      setProgress(`Video ready — ${Math.round(t / 60)} min ${Math.round(t % 60)} sec`);
+      setProgress(`Video ready — ${Math.floor(t / 60)} min ${Math.round(t % 60)} sec`);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Kuch galat ho gaya");
       setPhase(script ? "ready" : "idle");
