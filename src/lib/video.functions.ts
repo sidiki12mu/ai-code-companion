@@ -208,8 +208,7 @@ export const synthesize = createServerFn({ method: "POST" })
           : await voiceViaLovable(lovableKey!, data.text);
         return { audio: buf.toString("base64") };
       } catch (e) {
-        lastErr = e instanceof Error ? e.message : String(e);
-        lastErr = new Error(String(lastErr));
+        lastErr = e instanceof Error ? e : new Error(String(e));
         const msg = lastErr.message;
         const retryable = /\((429|5\d\d)\)/.test(msg) || /nahi di/.test(msg);
         if (!retryable || attempt === 2) break;
